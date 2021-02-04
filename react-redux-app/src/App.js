@@ -13,8 +13,8 @@ function App(props) {
     <div className="App">
         <BrowserRouter>
           <Switch>
-            <Route path="/posts" render={() => <PostContainer />}/>
-            {/* <Route path="/posts/add" render={() => <AddPost />}/> */}
+            <Route exact path="/posts" render={() => <PostContainer />}/>
+            <Route path="/posts/add" render={() => <AddPost />}/>
             <Redirect to="/posts" />
           </Switch>
         </BrowserRouter>

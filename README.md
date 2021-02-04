@@ -1,5 +1,5 @@
 ## Javascript Algorithm 
-`cd algorithm`
+Run `cd algorithm`
 ### `1`
 
 Run `node exercise-1` 

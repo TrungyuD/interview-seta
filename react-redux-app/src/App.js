@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react';
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { getAllPosts } from './store/actions';
+import PostContainer from './components/posts/PostContainer';
+import AddPost from './components/posts/AddPost';
 
-function App() {
+function App(props) {
+    useEffect(() => {
+      props.getAllPosts();
+    }, [props]);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <BrowserRouter>
+          <Switch>
+            <Route path="/posts" render={() => <PostContainer />}/>
+            {/* <Route path="/posts/add" render={() => <AddPost />}/> */}
+            <Redirect to="/posts" />
+          </Switch>
+        </BrowserRouter>
     </div>
   );
 }
 
-export default App;
+const mapDispatchToProps = {
+  getAllPosts
+}
+
+export default connect(null, mapDispatchToProps)(App);
